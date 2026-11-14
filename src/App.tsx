@@ -1,122 +1,124 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AppLayout } from './components/layout/AppLayout';
+import { DashboardPage } from './pages/DashboardPage';
+import { AcademyPage } from './pages/AcademyPage';
+import { AstronautFundamentalsPage } from './pages/AstronautFundamentalsPage';
+import { LifeSupportPage } from './pages/LifeSupportPage';
+import { EVAPage } from './pages/EVAPage';
+import { EVASimulatorPage } from './pages/EVASimulatorPage';
+import { EmergencyPage } from './pages/EmergencyPage';
+import { EmergencySimulatorPage } from './pages/EmergencySimulatorPage';
+import { PlanetaryPage } from './pages/PlanetaryPage';
+import { PlanetarySimulatorPage } from './pages/PlanetarySimulatorPage';
+import { MissionPlanningPage } from './pages/MissionPlanningPage';
+import { MissionPlanningWorkspacePage } from './pages/MissionPlanningWorkspacePage';
+import { MissionControlSimulatorPage } from './pages/MissionControlSimulatorPage';
+import { SpaceSciencePage } from './pages/SpaceSciencePage';
+import { SpaceScienceLabPage } from './pages/SpaceScienceLabPage';
+import { CrmPage } from './pages/CrmPage';
+import { CrmTrainingCenterPage } from './pages/CrmTrainingCenterPage';
+import { PracticalTrainingPage } from './pages/PracticalTrainingPage';
+import { ObservatoryPage } from './pages/ObservatoryPage';
+import { LessonPage } from './pages/LessonPage';
+import { SpaceflightPage } from './pages/SpaceflightPage';
+import { SpacesuitPage } from './pages/SpacesuitPage';
+import { MicrogravityPage } from './pages/MicrogravityPage';
+import { ComingSoonPage } from './pages/ComingSoonPage';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          {/* Main Root Opens Directly on Training Dashboard */}
+          <Route index element={<DashboardPage />} />
 
-      <div className="ticks"></div>
+          {/* Academy Curriculum */}
+          <Route path="academy" element={<AcademyPage />} />
+          <Route path="academy/astronaut-fundamentals" element={<AstronautFundamentalsPage />} />
+          <Route path="academy/life-support" element={<LifeSupportPage />} />
+          <Route path="academy/module-02" element={<Navigate to="/academy/life-support" replace />} />
+          <Route path="academy/eva" element={<EVAPage />} />
+          <Route path="academy/module-03" element={<Navigate to="/academy/eva" replace />} />
+          <Route path="academy/emergency" element={<EmergencyPage />} />
+          <Route path="academy/module-04" element={<Navigate to="/academy/emergency" replace />} />
+          <Route path="academy/planetary" element={<PlanetaryPage />} />
+          <Route path="academy/module-05" element={<Navigate to="/academy/planetary" replace />} />
+          <Route path="academy/mission-planning" element={<MissionPlanningPage />} />
+          <Route path="academy/module-06" element={<Navigate to="/academy/mission-planning" replace />} />
+          <Route path="academy/space-science" element={<SpaceSciencePage />} />
+          <Route path="academy/module-07" element={<Navigate to="/academy/space-science" replace />} />
+          <Route path="academy/crm" element={<CrmPage />} />
+          <Route path="academy/module-08" element={<Navigate to="/academy/crm" replace />} />
+          <Route path="crm/training-center" element={<CrmTrainingCenterPage />} />
+          <Route path="crm" element={<Navigate to="/crm/training-center" replace />} />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          {/* Dedicated Interactive Lesson Page */}
+          <Route path="lessons/:lessonId" element={<LessonPage />} />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+          {/* Interactive 3D Simulators & Demonstrations */}
+          <Route path="eva/simulator" element={<EVASimulatorPage />} />
+          <Route path="emergency/simulator" element={<EmergencySimulatorPage />} />
+          <Route path="simulator/emergency" element={<EmergencySimulatorPage />} />
+          <Route path="planetary/simulator" element={<PlanetarySimulatorPage />} />
+          <Route path="simulator/planetary" element={<PlanetarySimulatorPage />} />
+          <Route path="mission-planning/workspace" element={<MissionPlanningWorkspacePage />} />
+          <Route path="mission-planning" element={<Navigate to="/mission-planning/workspace" replace />} />
+          <Route path="mission-control" element={<MissionControlSimulatorPage />} />
+          <Route path="mission-control/simulator" element={<MissionControlSimulatorPage />} />
+          <Route path="space-science/lab" element={<SpaceScienceLabPage />} />
+          <Route path="space-science" element={<Navigate to="/space-science/lab" replace />} />
+          <Route path="science/lab" element={<SpaceScienceLabPage />} />
+          <Route path="simulator" element={<EVASimulatorPage />} />
+          <Route path="spaceflight" element={<SpaceflightPage />} />
+          <Route path="spacesuit" element={<SpacesuitPage />} />
+          <Route path="microgravity" element={<MicrogravityPage />} />
+          <Route path="moon-mars" element={<PlanetarySimulatorPage />} />
+
+          {/* Practical Astronaut Readiness & Space Science Observatory */}
+          <Route path="practical-training" element={<PracticalTrainingPage />} />
+          <Route path="observatory" element={<ObservatoryPage />} />
+          <Route path="telemetry/observatory" element={<Navigate to="/observatory" replace />} />
+
+          {/* Upcoming Future Modules (Polished Placeholders) */}
+          <Route
+            path="assessments"
+            element={
+              <ComingSoonPage
+                title="Comprehensive Assessments"
+                category="CERTIFICATION EXAMS"
+                description="Timed formal examinations and simulated emergency scenarios leading to official Astronaut Candidate (ASCAN) Phase 01 certification."
+              />
+            }
+          />
+          <Route
+            path="ai-instructor"
+            element={
+              <ComingSoonPage
+                title="AI Mission Flight Instructor"
+                category="INTELLIGENT FLIGHT TUTOR"
+                description="Autonomous conversational aerospace instructor providing real-time mission assistance, debriefs, and flight manual queries."
+              />
+            }
+          />
+          <Route
+            path="analytics"
+            element={
+              <ComingSoonPage
+                title="Performance Analytics & Telemetry"
+                category="FLIGHT READINESS METRICS"
+                description="In-depth analytics on knowledge retention, reaction latency during simulated anomalies, and curriculum completion curves."
+              />
+            }
+          />
+
+          {/* Catch-all redirect to Dashboard */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
